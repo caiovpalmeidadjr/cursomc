@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Produto implements Serializable {
 
@@ -32,6 +34,8 @@ public class Produto implements Serializable {
 	// joinTable nome da tabela do muitos p muitos no banco
 	// joinColumns nome do campo da chave estrangeira
 	// inverseJoinColumns nome da outra chave estrangeira
+	// @JsonBackReference já foi buscado os objetos no outro lado da associação e desse lado ele não busca, omiti a lista de categorias para cada produto
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
 	private List<Categoria> categorias = new ArrayList<Categoria>();

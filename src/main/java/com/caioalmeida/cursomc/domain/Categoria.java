@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Categoria implements Serializable {
 
@@ -26,6 +28,8 @@ public class Categoria implements Serializable {
 	// produto tem uma ou varias categorias / relacionamento muitos p/ muitos
 	// como já fiz o mapeamento maior na outra tabela, devo apenas fazer o
 	// mapeamento encima do atributo da outra tabela
+	//serializando os produtos, referencia gerenciada pelo json, lado onde quero que venha os objetos associados 
+	@JsonManagedReference
 	@ManyToMany(mappedBy = "categorias")
 	private List<Produto> produtos = new ArrayList<Produto>();
 

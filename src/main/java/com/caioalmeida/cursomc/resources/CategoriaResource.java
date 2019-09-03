@@ -23,6 +23,7 @@ public class CategoriaResource {
 	
 	//colocando o tipo de requisição, usando get para obter os dados/ passando id
 	//ResponseEntity<?> armazena varias informações de uma resposta HTTP para um tipo resp(Spring)
+	//randler que vai interceptar uma exception nessa class
 	@RequestMapping(value ="/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		
